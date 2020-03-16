@@ -9,7 +9,7 @@ def int_func(my_string):
     phrase = []
     my_string = my_string.split()
     for word in my_string:
-        phrase.append(word.lower().title())
+        phrase.append(word.title())
     print(' '.join(map(str, phrase)))
 
 
