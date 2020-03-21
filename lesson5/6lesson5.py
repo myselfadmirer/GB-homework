@@ -9,13 +9,23 @@
 # {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
 
 
-import re
+# from re import findall
+#
+# c_dict = {}
+#
+# with open(r'C:\\Users\\NELYUBINA\\git-project\\GB-homework\\lesson5\\6lesson5.txt', 'r', encoding='utf-8') as my_file:
+#     for line in my_file:
+#         my_class = line.split(':')
+#         hours = findall(r'[0-9]+', my_class[1])
+#         c_dict[my_class[0]] = sum(list(map(int, hours)))
+# print(c_dict)
+
 
 c_dict = {}
 
 with open(r'C:\\Users\\NELYUBINA\\git-project\\GB-homework\\lesson5\\6lesson5.txt', 'r', encoding='utf-8') as my_file:
     for line in my_file:
         my_class = line.split(':')
-        hours = re.findall(r'[0-9]+', my_class[1])
-        c_dict[my_class[0]] = sum(list(map(int, hours)))
+        hours = [int(el.split('(')[0]) for el in my_class[1].split() if el.split('(')[0].isdigit()]
+        c_dict[my_class[0]] = sum(hours)
 print(c_dict)
